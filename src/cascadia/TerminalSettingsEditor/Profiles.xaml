@@ -17,22 +17,6 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="CommonResources.xaml" />
             </ResourceDictionary.MergedDictionaries>
-
-            <DataTemplate x:Key="EnumRadioButtonTemplate"
-                          x:DataType="local:EnumEntry">
-                <RadioButton Content="{x:Bind EnumName, Mode=OneWay}" />
-            </DataTemplate>
-
-            <DataTemplate x:Key="EnumComboBoxItemTemplate"
-                          x:DataType="local:EnumEntry">
-                <TextBlock Text="{x:Bind EnumName, Mode=OneWay}" />
-            </DataTemplate>
-
-            <DataTemplate x:Key="FontFaceComboBoxItemTemplate"
-                          x:DataType="local:Font">
-                <TextBlock FontFamily="{x:Bind Name}"
-                           Text="{x:Bind LocalizedName}" />
-            </DataTemplate>
         </ResourceDictionary>
     </Page.Resources>
 
