@@ -19,9 +19,6 @@ namespace winrt::Microsoft::Terminal::Settings::Editor::implementation
         static Windows::Foundation::Collections::IObservableVector<Editor::Font> CompleteFontList() noexcept { return _FontList; };
         static Windows::Foundation::Collections::IObservableVector<Editor::Font> MonospaceFontList() noexcept { return _MonospaceFontList; };
 
-        static ProfilesPivots LastActivePivot() noexcept { return _LastActivePivot; };
-        static void LastActivePivot(Editor::ProfilesPivots val) noexcept { _LastActivePivot = val; };
-
         ProfileViewModel(const Model::Profile& profile, const Model::CascadiaSettings& settings);
         Model::TerminalSettings TermSettings() const;
         void DeleteProfile();
@@ -77,6 +74,7 @@ namespace winrt::Microsoft::Terminal::Settings::Editor::implementation
         void DeleteUnfocusedAppearance();
         bool AtlasEngineAvailable() const noexcept;
 
+        VIEW_MODEL_OBSERVABLE_PROPERTY(ProfileSubPage, CurrentPage);
         WINRT_PROPERTY(bool, IsBaseLayer, false);
         WINRT_PROPERTY(IHostedInWindow, WindowRoot, nullptr);
         GETSET_BINDABLE_ENUM_SETTING(AntiAliasingMode, Microsoft::Terminal::Control::TextAntialiasingMode, _profile, AntialiasingMode);
@@ -122,7 +120,6 @@ namespace winrt::Microsoft::Terminal::Settings::Editor::implementation
 
         static Windows::Foundation::Collections::IObservableVector<Editor::Font> _MonospaceFontList;
         static Windows::Foundation::Collections::IObservableVector<Editor::Font> _FontList;
-        static ProfilesPivots _LastActivePivot;
 
         static Editor::Font _GetFont(com_ptr<IDWriteLocalizedStrings> localizedFamilyNames);
 
